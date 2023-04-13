@@ -27,7 +27,28 @@ body {
   text-align: center;
 }
 
-#articleDetailsImage {
-  width: 75%;
+.articleDetailsImage {
+  width: 10px;
   margin: 0 auto;
+}
+
+.articleDetailsTitle {
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+.articleDetailsCreator{
+  text-decoration: none;
+  color: #001F54;
+}
+
+.articleDetailsSummary {
+  font-size: 1rem;
+  color: white;
+}
+
+.articleDetailsOutsideLink {
+  text-decoration: none;
+  color: #1282A2;
 }

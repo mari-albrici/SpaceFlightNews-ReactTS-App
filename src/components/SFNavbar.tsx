@@ -1,7 +1,12 @@
+import { ChangeEvent, useState } from 'react';
 import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SFNavbar = () => {
+	const navigate = useNavigate();
+	const [query, setQuery] = useState('');
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
+
 	return (
 		<>
 			{['lg'].map((expand) => (
@@ -19,8 +24,8 @@ const SFNavbar = () => {
 										Favourites
 									</Link>
 								</Nav>
-								<Form className="d-flex">
-									<Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
+								<Form className="d-flex" onSubmit={() => navigate('/searched=' + query)}>
+									<Form.Control type="search" value={query} placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
 									<Button variant="outline-info">Search</Button>
 								</Form>
 							</Offcanvas.Body>

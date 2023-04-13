@@ -32,7 +32,7 @@ const SFHomepage = () => {
 					{articles.map((article) => {
 						return (
 							<>
-								<Col xs={4} key={article.id}>
+								<Col xs={12} md={6} lg={4} key={article.id}>
 									<SFSingleArticle articles={article} id={article.id} />
 								</Col>
 							</>

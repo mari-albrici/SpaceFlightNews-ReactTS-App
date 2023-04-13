@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
 import { IArticle } from '../interfaces/IArticle';
 
 const SFArticleDetails = () => {
@@ -29,11 +29,41 @@ const SFArticleDetails = () => {
 	return (
 		<>
 			{articleData && (
-				<Container id="articleDetailsContainer" key={articleData.id}>
-					<h1> {articleData.title}</h1>
-					<img src={articleData.image_url} alt="article cover" id="articleDetailsImage" />
-					<p> {articleData.summary}</p>
-					<p className="text-muted">Published: {articleData.published_at}</p>
+				<Container key={articleData.id} className="articleDetailsContainer">
+					<Row>
+						<Col xs={12} className="articleDetailsTitle">
+							<h1>{articleData.title}</h1>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<Card>
+								<Card.Img src={articleData.image_url} className="articleDetailsImage" />
+							</Card>
+						</Col>
+						<Col>
+							<p>
+								Posted by:{' '}
+								<Link to={'https://spacenews.com/'} className="articleDetailsCreator">
+									{' '}
+									{articleData.news_site}
+								</Link>
+							</p>
+							<p className="articleDetailsSummary">{articleData.summary}</p>
+							<Button variant="light">
+								<Link to={articleData.url} className="articleDetailsOutsideLink">
+									Continue reading...
+								</Link>
+							</Button>
+						</Col>
+					</Row>
+					<Row>
+						<p className="text-muted">
+							<small>
+								Published on: {new Date(articleData.published_at).toLocaleDateString()} @ {new Date(articleData.published_at).toLocaleTimeString()}
+							</small>
+						</p>
+					</Row>
 				</Container>
 			)}
 		</>

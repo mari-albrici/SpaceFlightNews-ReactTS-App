@@ -4,6 +4,7 @@ import SFNavbar from './components/SFNavbar';
 import SFFooter from './components/SFFooter';
 import SFHomepage from './components/SFHomepage';
 import SFArticleDetails from './components/SFArticleDetails';
+import SFSearch from './components/SFSearch';
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 					<Route path="/" element={<SFHomepage />} />
 					<Route path="/favs" />
 					<Route path="/:article_id" element={<SFArticleDetails />} />
+					<Route path="/searched=" element={<SFSearch />} />
 				</Routes>
 				<SFFooter />
 			</BrowserRouter>
