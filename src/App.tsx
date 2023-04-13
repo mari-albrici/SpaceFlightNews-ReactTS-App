@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SFNavbar from './components/SFNavbar';
+import SFFooter from './components/SFFooter';
+import SFHomepage from './components/SFHomepage';
+import SFArticleDetails from './components/SFArticleDetails';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<BrowserRouter>
+				<SFNavbar />
+				<Routes>
+					<Route path="/" element={<SFHomepage />} />
+					<Route path="/favs" />
+					<Route path="/:article_id" element={<SFArticleDetails />} />
+				</Routes>
+				<SFFooter />
+			</BrowserRouter>
+		</>
+	);
 }
 
 export default App;
