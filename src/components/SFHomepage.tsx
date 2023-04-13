@@ -4,7 +4,7 @@ import { IArticle } from '../interfaces/IArticle';
 import SFSingleArticle from './SFSingleArticle';
 
 const SFHomepage = () => {
-	const URL = 'https://api.spaceflightnewsapi.net/v4/articles/';
+	const URL = 'https://api.spaceflightnewsapi.net/v4/articles/?limit=15';
 	const [articles, setArticles] = useState<IArticle[]>([]);
 
 	const getArticles = async () => {

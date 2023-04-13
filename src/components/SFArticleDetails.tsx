@@ -29,7 +29,7 @@ const SFArticleDetails = () => {
 	return (
 		<>
 			{articleData && (
-				<Container key={articleData.id} className="articleDetailsContainer">
+				<Container key={articleData.id} className="articleDetailsContainer" style={{ height: '84vh' }}>
 					<Row>
 						<Col xs={12} className="articleDetailsTitle">
 							<h1>{articleData.title}</h1>

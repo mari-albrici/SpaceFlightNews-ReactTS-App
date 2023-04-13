@@ -1,5 +1,6 @@
 body {
   background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background-repeat: no-repeat
 }
 
 #creatorLogo {
@@ -22,9 +23,10 @@ body {
   height: 200px;
 }
 
-#articleDetailsContainer {
-  width: 80%;
+#articleDetailsContainer { 
+  width: 80vh;
   text-align: center;
+ 
 }
 
 .articleDetailsImage {

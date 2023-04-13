@@ -1,11 +1,26 @@
 import { ChangeEvent, useState } from 'react';
 import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import SFSearch from './SFSearch';
 
 const SFNavbar = () => {
-	const navigate = useNavigate();
 	const [query, setQuery] = useState('');
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
+
+	const [searchedArticles, setSearchedArticles] = useState([]);
+
+	const getSearchedArticles = async () => {
+		try {
+			const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?title_contains=' + query);
+			if (response.ok) {
+				const foundArticles = await response.json();
+				setSearchedArticles(foundArticles.results);
+				console.log(searchedArticles);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<>
@@ -24,7 +39,7 @@ const SFNavbar = () => {
 										Favourites
 									</Link>
 								</Nav>
-								<Form className="d-flex" onSubmit={() => navigate('/searched=' + query)}>
+								<Form className="d-flex" onSubmit={getSearchedArticles}>
 									<Form.Control type="search" value={query} placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
 									<Button variant="outline-info">Search</Button>
 								</Form>
@@ -33,6 +48,8 @@ const SFNavbar = () => {
 					</Container>
 				</Navbar>
 			))}
+
+			{/* {searchedArticles && <SFSearch />} */}
 		</>
 	);
 };

@@ -15,9 +15,9 @@ const SFSingleArticle = ({ articles, id }: ArticleProps) => {
 			<Card className="homepageCard" key={id}>
 				<Card.Img variant="top" src={articles.image_url} alt="Card image" className="homepageImage" />
 				<Card.Body>
-					<Card.Title>{articles.title}</Card.Title>
+					<Card.Title className="text-truncate">{articles.title}</Card.Title>
 					<Card.Text className="text-truncate">{articles.summary}</Card.Text>
-					<Card.Text className="text-muted">Published: {articles.published_at}</Card.Text>
+					<Card.Text className="text-muted">Published: {new Date(articles.published_at).toLocaleDateString()}</Card.Text>
 					<Card.Footer className="d-flex justify-content-around">
 						<Button variant="primary" onClick={() => navigate('/' + id)}>
 							Read more
